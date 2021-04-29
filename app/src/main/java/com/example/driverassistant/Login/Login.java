@@ -1,4 +1,4 @@
-package com.example.driverassistant.login;
+package com.example.driverassistant.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,10 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.driverassistant.R;
-import com.example.driverassistant.mainassistant.main_activity;
-import com.example.driverassistant.register.register;
+import com.example.driverassistant.Home.Home;
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     private EditText username;
     private EditText pwd;
     private Button login;
@@ -23,7 +22,8 @@ public class login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.login_login);
+
         init();
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -34,25 +34,25 @@ public class login extends AppCompatActivity {
 
                 //check username and password is empty ?
                 if(name.isEmpty()){
-                    Toast.makeText(login.this,"Please enter your username !!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this,"Please enter your username !!", Toast.LENGTH_SHORT).show();
                     username.requestFocus();
                 }else if(password.isEmpty()){
-                    Toast.makeText(login.this,"Please enter your password !!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this,"Please enter your password !!", Toast.LENGTH_SHORT).show();
                     pwd.requestFocus();
                 }
 
                 if(name.equals("Admin") && password.equals("Admin")){
-                    Intent intent = new Intent(login.this, main_activity.class);
+                    Intent intent = new Intent(Login.this, Home.class);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(login.this,"Please enter again form !!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this,"Please enter again form !!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(login.this, register.class);
+                Intent intent = new Intent(Login.this, Register.class);
                 startActivity(intent);
             }
         });

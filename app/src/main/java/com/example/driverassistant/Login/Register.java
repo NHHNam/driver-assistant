@@ -1,4 +1,4 @@
-package com.example.driverassistant.register;
+package com.example.driverassistant.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +14,7 @@ import com.example.driverassistant.R;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class register extends AppCompatActivity {
+public class Register extends AppCompatActivity {
     private EditText name;
     private EditText date;
     private EditText Address;
@@ -22,11 +22,10 @@ public class register extends AppCompatActivity {
     private EditText pwd;
     private Button btn;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.login_register);
 
         init();
         date.setOnClickListener(new View.OnClickListener() {
