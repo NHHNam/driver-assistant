@@ -45,5 +45,11 @@
 
         <activity android:name=".Petrol.UpdateActivity"/>
 
+        <!-- chucnang activity -->
+        <activity android:name=".chucnang.dichvu"></activity>
+        <activity android:name=".chucnang.nhienlieu"></activity>
+        <activity android:name=".chucnang.loaichi"></activity>
+        <activity android:name=".chucnang.loaithunhap"></activity>
     </application>
+
 </manifest>
