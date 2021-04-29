@@ -1,4 +1,4 @@
-package com.example.driverassistant.ListPetrol;
+package com.example.driverassistant.Petrol;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

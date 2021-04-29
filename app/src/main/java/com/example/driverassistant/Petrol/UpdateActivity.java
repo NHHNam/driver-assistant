@@ -1,4 +1,4 @@
-package com.example.driverassistant.ListPetrol;
+package com.example.driverassistant.Petrol;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -19,7 +19,7 @@ import com.example.driverassistant.R;
 
 import java.util.Calendar;
 
-public class UpdateAcitivity extends AppCompatActivity {
+public class UpdateActivity extends AppCompatActivity {
 
     private EditText edname;
     private EditText edaddress;
@@ -41,7 +41,7 @@ public class UpdateAcitivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_acitivity);
+        setContentView(R.layout.petrol_activity_update);
 
         initEvent();
 

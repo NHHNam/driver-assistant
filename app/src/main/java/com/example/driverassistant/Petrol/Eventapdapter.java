@@ -1,4 +1,4 @@
-package com.example.driverassistant.ListPetrol;
+package com.example.driverassistant.Petrol;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +35,7 @@ public class Eventapdapter extends RecyclerView.Adapter<Eventapdapter.EventHolde
     @NonNull
     @Override
     public EventHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.petrol_items,parent,false);
         return new EventHolder(view);
     }
 

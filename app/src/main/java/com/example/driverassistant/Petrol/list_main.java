@@ -1,4 +1,4 @@
-package com.example.driverassistant.ListPetrol;
+package com.example.driverassistant.Petrol;
 
 
 import androidx.annotation.Nullable;
@@ -59,7 +59,7 @@ public class list_main extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_main);
+        setContentView(R.layout.petrol_list_main);
 
         initUser();
 
@@ -75,6 +75,7 @@ public class list_main extends AppCompatActivity {
                 clickDelevent(event);
             }
         });
+
         adapter.setData(mlistEvent);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -181,6 +182,8 @@ public class list_main extends AppCompatActivity {
         }
 
         EventDatabase.getInstance(this).eventDao().insertEvent(event);
+
+        EventDatabase.getInstance(this).eventDao().insertEvent(event);
         Toast.makeText(this,"Add user succesfullly!!" ,Toast.LENGTH_SHORT).show();
 
         edname.setText("");
@@ -224,7 +227,7 @@ public class list_main extends AppCompatActivity {
     }
 
     private void clickUpdateEvent(Event user) {
-        Intent intent = new Intent(list_main.this, UpdateAcitivity.class);
+        Intent intent = new Intent(list_main.this, UpdateActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("object_event", user);
         intent.putExtras(bundle);
