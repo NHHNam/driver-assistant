@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".login.login"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@color/green_white">
 
     <LinearLayout
         android:layout_marginTop="50dp"
@@ -14,25 +15,19 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ai"/>
+<!--        <ImageView-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:src="@drawable/ai"/>-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LOGIN"
+            android:fontFamily="@font/alien"
             android:gravity="center"
-            android:textSize="30dp"
+            android:textSize="100dp"
             android:textColor="@color/black"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DRIVER ASSISTANT"
-            android:gravity="center"
-            android:textSize="30dp"
-            android:textColor="@color/black"/>
 
     </LinearLayout>
 

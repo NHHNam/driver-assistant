@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.driverassistant.ListPetrol.list_main;
 import com.example.driverassistant.R;
-import com.example.driverassistant.map.map;
 
 public class main_activity extends AppCompatActivity {
     private TextView map;
@@ -72,7 +71,6 @@ public class main_activity extends AppCompatActivity {
     }
 
     private void EnterMap() {
-        Intent intent = new Intent(main_activity.this, com.example.driverassistant.map.map.class);
-        startActivity(intent);
+
     }
 }
