@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Login.Login"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:background="@drawable/header_background"
@@ -14,10 +13,7 @@
         android:layout_height="200dp"
         android:gravity="center"
         android:orientation="vertical">
-<!--        <ImageView-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:src="@drawable/ai"/>-->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,94 +25,111 @@
 
     </LinearLayout>
 
-
     <LinearLayout
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp">
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="USERNAME:"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_weight="3"/>
-        <EditText
-            android:layout_marginBottom="10dp"
+        <LinearLayout
             android:padding="10dp"
-            android:background="@drawable/bg_white_border"
-            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="USERNAME:"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_weight="3"/>
+            <EditText
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:background="@drawable/bg_white_border"
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="PASSWORD:"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_weight="3"/>
+
+            <EditText
+                android:padding="10dp"
+                android:background="@drawable/bg_white_border"
+                android:id="@+id/pwd"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:inputType="textPassword"/>
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:textColor="@color/black"
+            android:layout_gravity="right"/>
+
     </LinearLayout>
 
+
+
     <LinearLayout
-        android:padding="10dp"
+        android:gravity="bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp">
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1">
 
-        <TextView
+        <Button
+            android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="PASSWORD:"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_weight="3"/>
-
-        <EditText
-            android:padding="10dp"
-            android:background="@drawable/bg_white_border"
-            android:id="@+id/pwd"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:inputType="textPassword"/>
-    </LinearLayout>
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Forgot Password?"
-        android:textColor="@color/black"
-        android:layout_gravity="right"/>
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/green_white"
-        android:text="LOGIN"
-        android:textColor="@color/black"/>
-    <LinearLayout
-        android:layout_marginTop="50dp"
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:gravity="right"
+            android:backgroundTint="@color/green_white"
+            android:text="LOGIN"
+            android:textColor="@color/black"/>
+        <LinearLayout
+            android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New User ? "
-            android:layout_weight="2"
-            android:textColor="#a4c639"/>
-        <TextView
-            android:id="@+id/sign_up"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign up for a new account"
-            android:layout_weight="1"
-            android:textColor="#54cdb4"/>
+            android:orientation="horizontal">
+            <TextView
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New User ? "
+                android:layout_weight="2"
+                android:textColor="#a4c639"/>
+            <TextView
+                android:id="@+id/sign_up"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign up for a new account"
+                android:layout_weight="1"
+                android:textColor="#54cdb4"/>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
