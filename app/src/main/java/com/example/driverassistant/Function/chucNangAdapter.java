@@ -25,7 +25,7 @@ public class chucNangAdapter extends RecyclerView.Adapter<chucNangAdapter.ChucNa
     @NonNull
     @Override
     public ChucNangHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_chuc_nang,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.function_items,parent,false);
         return new ChucNangHolder(view);
     }
 

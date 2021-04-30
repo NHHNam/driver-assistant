@@ -35,7 +35,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionFinderListener {
+public class MapActivity extends FragmentActivity implements OnMapReadyCallback, DirectionFinderListener {
 
     private GoogleMap mMap;
     private Button btnFindPath;
@@ -54,11 +54,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
-        btnFindPath = (Button) findViewById(R.id.btnFindPath);
-        etOrigin = (EditText) findViewById(R.id.etOrigin);
-        etDestination = (EditText) findViewById(R.id.etDestination);
+        btnFindPath = findViewById(R.id.btnFindPath);
+        etOrigin = findViewById(R.id.etOrigin);
+        etDestination = findViewById(R.id.etDestination);
 
         btnFindPath.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,13 +79,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.home_bottom_report:
-                    startActivity(new Intent(MapsActivity.this, Home.class));
+                    startActivity(new Intent(MapActivity.this, Home.class));
                     overridePendingTransition(0,0);
                     finish();
                     return true;
 
                 case R.id.home_bottom_history:
-                    startActivity(new Intent(MapsActivity.this, History.class));
+                    startActivity(new Intent(MapActivity.this, History.class));
                     overridePendingTransition(0,0);
                     finish();
                     return true;
