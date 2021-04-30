@@ -1,10 +1,13 @@
 package com.example.driverassistant.Home;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -14,16 +17,20 @@ import com.example.driverassistant.Map.MapsActivity;
 import com.example.driverassistant.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 
 public class History extends AppCompatActivity {
-    private EditText loai_xe;
+    private TextView loai_xe;
+    private TextView ngay_theo_doi;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_history);
 
-        loai_xe = findViewById(R.id.ed_loai_xe);
+        loai_xe = findViewById(R.id.tv_loai_xe);
+        ngay_theo_doi = findViewById(R.id.tv_ngay_theo_doi);
 
         setBottomNavigation();
 
@@ -31,6 +38,12 @@ public class History extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loaixe();
+            }
+        });
+        ngay_theo_doi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickDate();
             }
         });
     }
@@ -70,7 +83,7 @@ public class History extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         // set title
-        builder.setTitle("Select place");
+        builder.setTitle("Chọn hãng xe bạn dùng: ");
 
         // generate an array of places
         final String[] places = new String[]{
@@ -98,5 +111,22 @@ public class History extends AppCompatActivity {
         // Finally, display the alert dialog
         dialog.show();
     }//loai_xe dialog
+
+    private void pickDate() {
+        final Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DATE);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(year, month, dayOfMonth);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                ngay_theo_doi.setText(simpleDateFormat.format(calendar.getTime()));
+            }
+        }, year, month, day);
+        datePickerDialog.show();
+    }
 
 }
