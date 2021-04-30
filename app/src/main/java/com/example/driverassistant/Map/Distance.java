@@ -1,4 +1,4 @@
-package com.example.driverassistant.map;
+package com.example.driverassistant.Map;
 
 /**
  * Created by Mai Thanh Hiep on 4/3/2016.

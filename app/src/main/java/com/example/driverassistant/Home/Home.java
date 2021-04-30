@@ -1,20 +1,17 @@
-package com.example.driverassistant.mainassistant;
+package com.example.driverassistant.Home;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.driverassistant.Map.MapsActivity;
 import com.example.driverassistant.Petrol.list_main;
 import com.example.driverassistant.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.example.driverassistant.map.MapsActivity;
 
 public class Home extends AppCompatActivity {
     private TextView map;
@@ -153,7 +150,7 @@ public class Home extends AppCompatActivity {
                     return true;
 
                 case R.id.home_bottom_map:
-                    startActivity(new Intent(Home.this, MapFragment.class));
+                    startActivity(new Intent(Home.this, MapsActivity.class));
                     overridePendingTransition(0,0);
                     finish();
                     return true;

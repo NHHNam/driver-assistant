@@ -1,4 +1,4 @@
-package com.example.driverassistant.map;
+package com.example.driverassistant.Map;
 
 
 public class Duration {

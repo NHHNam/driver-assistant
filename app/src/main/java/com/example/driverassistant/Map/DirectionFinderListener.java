@@ -1,4 +1,4 @@
-package com.example.driverassistant.map;
+package com.example.driverassistant.Map;
 
 import java.util.List;
 

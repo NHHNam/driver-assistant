@@ -1,4 +1,4 @@
-package com.example.driverassistant.chucnang;
+package com.example.driverassistant.Function;
 
 public class ChucNang {
     private String name;
