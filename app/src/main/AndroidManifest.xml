@@ -25,10 +25,14 @@
         <activity android:name=".register.register" />
         <activity android:name=".mainassistant.main_activity"></activity>
         <activity android:name=".ListPetrol.list_main"></activity>
-        <activity android:name=".ListPetrol.UpdateAcitivity" />
-        <activity android:name=".chucnang.dichvu"></activity>
+        <activity android:name=".ListPetrol.UpdateAcitivity"></activity>
+        <activity android:name=".chucnang.dichvu">
+
+        </activity>
+        <activity android:name=".chucnang.loaichi">
+
+        </activity>
         <activity android:name=".chucnang.nhienlieu"></activity>
-        <activity android:name=".chucnang.loaichi"></activity>
         <activity android:name=".chucnang.loaithunhap"></activity>
     </application>
 

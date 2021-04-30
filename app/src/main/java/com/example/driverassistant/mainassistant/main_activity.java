@@ -11,10 +11,6 @@ import android.widget.TextView;
 
 import com.example.driverassistant.ListPetrol.list_main;
 import com.example.driverassistant.R;
-import com.example.driverassistant.chucnang.dichvu;
-import com.example.driverassistant.chucnang.loaichi;
-import com.example.driverassistant.chucnang.loaithunhap;
-import com.example.driverassistant.chucnang.nhienlieu;
 
 public class main_activity extends AppCompatActivity {
     private TextView map;
@@ -166,8 +162,8 @@ public class main_activity extends AppCompatActivity {
     }
 
     private void getdichvu() {
-        Intent i = new Intent(main_activity.this, com.example.driverassistant.chucnang.dichvu.class);
-        startActivity(i);
+        Intent t = new Intent(main_activity.this, com.example.driverassistant.chucnang.dichvu.class);
+        startActivity(t);
     }
 
     private void getnhienlieu() {
@@ -177,8 +173,8 @@ public class main_activity extends AppCompatActivity {
 
 
     private void getloaichi() {
-        Intent n = new Intent(main_activity.this, com.example.driverassistant.chucnang.loaichi.class);
-        startActivity(n);
+        Intent t = new Intent(main_activity.this, com.example.driverassistant.chucnang.loaichi.class);
+        startActivity(t);
     }
 
     private void getloaithunhap() {
