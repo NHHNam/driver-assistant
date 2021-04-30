@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.driverassistant.Map.MapsActivity;
+import com.example.driverassistant.Map.MapActivity;
 import com.example.driverassistant.Petrol.list_main;
 import com.example.driverassistant.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,7 +28,6 @@ public class Home extends AppCompatActivity {
     private TextView loaithunhap;
     private ImageView imgloaichi;
     private ImageView imgloaithunhap;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,7 +151,7 @@ public class Home extends AppCompatActivity {
                     return true;
 
                 case R.id.home_bottom_map:
-                    startActivity(new Intent(Home.this, MapsActivity.class));
+                    startActivity(new Intent(Home.this, MapActivity.class));
                     overridePendingTransition(0,0);
                     finish();
                     return true;
@@ -166,7 +165,7 @@ public class Home extends AppCompatActivity {
     }
 
     private void startMapActivity() {
-        startActivity(new Intent(Home.this, MapFragment.class));
+        startActivity(new Intent(Home.this, MapActivity.class));
     }
 
     private void startPetrolActivity() {

@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.driverassistant.Map.MapsActivity;
+import com.example.driverassistant.Map.MapActivity;
 import com.example.driverassistant.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -66,7 +65,7 @@ public class History extends AppCompatActivity {
                     return true;
 
                 case R.id.home_bottom_map:
-                    startActivity(new Intent(History.this, MapsActivity.class));
+                    startActivity(new Intent(History.this, MapActivity.class));
                     overridePendingTransition(0,0);
                     finish();
                     return true;
