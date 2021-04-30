@@ -23,6 +23,7 @@
         app:menu="@menu/home_bottom_navigation"
         app:itemTextColor="@drawable/home_nav_items"
         app:itemIconTint="@drawable/home_nav_items"
-        app:labelVisibilityMode="labeled" />
+        app:labelVisibilityMode="labeled"
+        android:background="@color/white"/>
 
 </LinearLayout>

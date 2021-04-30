@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Driverassistant">
+        android:theme="@style/Theme.Design.Light.NoActionBar">
 
         <!-- google api key -->
         <meta-data
@@ -21,7 +21,7 @@
 
 
         <!-- Home activity -->
-        <activity android:name=".Home.Welcome" android:theme="@style/Theme.Design.Light.NoActionBar">
+        <activity android:name=".Home.Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,12 +34,9 @@
         <activity android:name=".Home.MapFragment" />
 
         <!-- Login activity -->
-        <activity android:name=".Login.Login">
-
-        </activity>
+        <activity android:name=".Login.Login" />
 
         <activity android:name=".Login.Register" />
-
 
         <!-- Map activity -->
         <activity android:name=".Map.MapsActivity"/>
