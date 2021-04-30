@@ -1,20 +1,18 @@
 package com.example.driverassistant.Home;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.driverassistant.Petrol.list_main;
 import com.example.driverassistant.R;
-import com.example.driverassistant.chucnang.dichvu;
-import com.example.driverassistant.chucnang.loaichi;
-import com.example.driverassistant.chucnang.loaithunhap;
-import com.example.driverassistant.chucnang.nhienlieu;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Home extends AppCompatActivity {
     private TextView map;
@@ -32,13 +30,14 @@ public class Home extends AppCompatActivity {
     private ImageView imgloaichi;
     private ImageView imgloaithunhap;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_home);
 
-        map = findViewById(R.id.map);
+        setBottomNavigation();
+
+        map = findViewById(R.id.home_fragment_map);
         petrol = findViewById(R.id.list_petrol);
         imgmap = findViewById(R.id.inmgmap);
         imgpetrol = findViewById(R.id.imgpetrol);
@@ -136,13 +135,36 @@ public class Home extends AppCompatActivity {
 
     }
 
+    private void setBottomNavigation() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.home_nav);
+
+        bottomNavigationView.setSelectedItemId(R.id.home_bottom_report);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.home_bottom_report:
+                    return true;
+
+                case R.id.home_bottom_history:
+
+                    return true;
+
+                case R.id.home_bottom_map:
+                    startActivity(new Intent(Home.this, MapFragment.class));
+                    overridePendingTransition(0,0);
+                    finish();
+                    return true;
+
+                case R.id.home_bottom_more:
+                    return true;
+            }
+
+            return false;
+        });
+    }
+
     private void startMapActivity() {
-        Uri gmmIntentUri = Uri.parse("geo:10.76833026 106.67583063");
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
-        }
+        startActivity(new Intent(Home.this, MapFragment.class));
     }
 
     private void startPetrolActivity() {
@@ -150,23 +172,23 @@ public class Home extends AppCompatActivity {
     }
 
     private void getdichvu() {
-        Intent i = new Intent(main_activity.this, com.example.driverassistant.chucnang.dichvu.class);
+        Intent i = new Intent(Home.this, com.example.driverassistant.Function.dichvu.class);
         startActivity(i);
     }
 
     private void getnhienlieu() {
-        Intent t = new Intent(main_activity.this, com.example.driverassistant.chucnang.nhienlieu.class);
+        Intent t = new Intent(Home.this, com.example.driverassistant.Function.nhienlieu.class);
         startActivity(t);
     }
 
 
     private void getloaichi() {
-        Intent n = new Intent(main_activity.this, com.example.driverassistant.chucnang.loaichi.class);
+        Intent n = new Intent(Home.this, com.example.driverassistant.Function.loaichi.class);
         startActivity(n);
     }
 
     private void getloaithunhap() {
-        Intent h = new Intent(main_activity.this, com.example.driverassistant.chucnang.loaithunhap.class);
+        Intent h = new Intent(Home.this, com.example.driverassistant.Function.loaithunhap.class);
         startActivity(h);
     }
 }

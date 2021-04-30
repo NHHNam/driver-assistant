@@ -36,7 +36,7 @@ public class Register extends AppCompatActivity {
         });
     }
 
-    private void init() {//anh xa
+    private void init() {
         name = findViewById(R.id.register_name);
         date = findViewById(R.id.register_date);
         Address = findViewById(R.id.register_address);
@@ -45,7 +45,7 @@ public class Register extends AppCompatActivity {
         btn = findViewById(R.id.btn_register);
     }
 
-    private void pickDate() {//chon ngay qua date picker
+    private void pickDate() {
         final Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DATE);
         int month = calendar.get(Calendar.MONTH);
