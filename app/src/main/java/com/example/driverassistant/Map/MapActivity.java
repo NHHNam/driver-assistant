@@ -35,7 +35,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionFinderListener {
+public class MapActivity extends FragmentActivity implements OnMapReadyCallback, DirectionFinderListener {
 
     private GoogleMap mMap;
     private Button btnFindPath;
@@ -79,13 +79,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.home_bottom_report:
-                    startActivity(new Intent(MapsActivity.this, Home.class));
+                    startActivity(new Intent(MapActivity.this, Home.class));
                     overridePendingTransition(0,0);
                     finish();
                     return true;
 
                 case R.id.home_bottom_history:
-                    startActivity(new Intent(MapsActivity.this, History.class));
+                    startActivity(new Intent(MapActivity.this, History.class));
                     overridePendingTransition(0,0);
                     finish();
                     return true;
