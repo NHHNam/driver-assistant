@@ -30,47 +30,27 @@
         </activity>
         
         <activity android:name=".Home.Home"/>
-
-        <activity android:name=".Home.MapFragment" />
+        <activity android:name=".Home.History" />
 
         <!-- Login activity -->
         <activity android:name=".Login.Login" />
-
         <activity android:name=".Login.Register" />
 
         <!-- Map activity -->
-        <activity android:name=".Map.MapsActivity"/>
+        <activity android:name=".Map.MapActivity"/>
 
 
         <!-- Petrol activity -->
         <activity android:name=".Petrol.list_main" />
-
         <activity android:name=".Petrol.UpdateActivity"/>
 
+
         <!-- Function activity -->
-        <activity android:name=".Function.dichvu">
-
-        </activity>
-
-        <activity android:name=".Function.nhienlieu">
-
-        </activity>
-
-        <activity android:name=".Function.loaichi">
-
-        </activity>
-
-        <activity android:name=".Function.loaithunhap">
-
-        </activity>
-        <!--lien lac activity-->
-        <activity android:name=".Function.lienlac">
-
-        </activity>
-        <!-- History activity-->
-        <activity android:name=".Home.History">
-
-        </activity>
+        <activity android:name=".Function.dichvu" />
+        <activity android:name=".Function.nhienlieu" />
+        <activity android:name=".Function.loaichi" />
+        <activity android:name=".Function.loaithunhap" />
+        <activity android:name=".Function.lienlac" />
 
     </application>
 
