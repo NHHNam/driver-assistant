@@ -51,7 +51,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:fontFamily="@font/dancing"
             android:id="@+id/home_fragment_map"
             android:text="Map"
             android:textColor="@color/black"
@@ -66,7 +65,6 @@
             android:layout_height="match_parent"/>
 
         <TextView
-            android:fontFamily="@font/dancing"
             android:id="@+id/list_petrol"
             android:text="Danh sách đổ xăng"
             android:textColor="@color/black"
@@ -107,7 +105,6 @@
 
         <TextView
             android:id="@+id/tvdichvu"
-            android:fontFamily="@font/dancing"
             android:text="Loại hình dịch vụ"
             android:textColor="@color/black"
             android:gravity="center"
@@ -122,7 +119,6 @@
 
         <TextView
             android:id="@+id/tvnhienlieu"
-            android:fontFamily="@font/dancing"
             android:text="Nhiên liệu"
             android:textColor="@color/black"
             android:gravity="center"
@@ -162,7 +158,6 @@
 
         <TextView
             android:id="@+id/tvloaichi"
-            android:fontFamily="@font/dancing"
             android:text="Loại chi "
             android:textColor="@color/black"
             android:gravity="center"
@@ -177,7 +172,6 @@
 
         <TextView
             android:id="@+id/tvloaithunhap"
-            android:fontFamily="@font/dancing"
             android:text="Loại thu nhập"
             android:textColor="@color/black"
             android:gravity="center"

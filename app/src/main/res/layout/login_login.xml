@@ -22,7 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LOGIN"
-            android:fontFamily="@font/alien"
             android:gravity="center"
             android:textSize="100dp"
             android:textColor="@color/black"/>
