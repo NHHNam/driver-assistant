@@ -146,7 +146,9 @@ public class Home extends AppCompatActivity {
                     return true;
 
                 case R.id.home_bottom_history:
-
+                    startActivity(new Intent(Home.this,History.class));
+                    overridePendingTransition(0,0);
+                    finish();
                     return true;
 
                 case R.id.home_bottom_map:

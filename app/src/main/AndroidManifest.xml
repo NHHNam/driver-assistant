@@ -63,6 +63,14 @@
         <activity android:name=".Function.loaithunhap">
 
         </activity>
+        <!--lien lac activity-->
+        <activity android:name=".Function.lienlac">
+
+        </activity>
+        <!-- History activity-->
+        <activity android:name=".Home.History">
+
+        </activity>
 
     </application>
 

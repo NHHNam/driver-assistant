@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.driverassistant.Home.History;
 import com.example.driverassistant.Home.Home;
 import com.example.driverassistant.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -84,7 +85,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     return true;
 
                 case R.id.home_bottom_history:
-
+                    startActivity(new Intent(MapsActivity.this, History.class));
+                    overridePendingTransition(0,0);
+                    finish();
                     return true;
 
                 case R.id.home_bottom_map:

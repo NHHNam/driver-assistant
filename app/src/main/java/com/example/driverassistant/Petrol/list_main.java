@@ -183,7 +183,6 @@ public class list_main extends AppCompatActivity {
 
         EventDatabase.getInstance(this).eventDao().insertEvent(event);
 
-        EventDatabase.getInstance(this).eventDao().insertEvent(event);
         Toast.makeText(this,"Add user succesfullly!!" ,Toast.LENGTH_SHORT).show();
 
         edname.setText("");
