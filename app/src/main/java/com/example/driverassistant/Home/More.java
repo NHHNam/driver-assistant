@@ -1,4 +1,4 @@
-package com.example.driverassistant.More;
+package com.example.driverassistant.Home;
 
 import android.os.Bundle;
 
@@ -11,6 +11,6 @@ public class More extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.more_home);
+        setContentView(R.layout.home_more);
     }
 }
