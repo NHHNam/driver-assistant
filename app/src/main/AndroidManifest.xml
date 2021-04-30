@@ -21,7 +21,7 @@
 
 
         <!-- Home activity -->
-        <activity android:name=".Home.Home" >
+        <activity android:name=".Home.Welcome" android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +29,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Home.MapFragment" />
+        <activity android:name=".Home.Home" >
 
+        </activity>
+
+        <activity android:name=".Home.MapFragment" />
 
         <!-- Login activity -->
         <activity android:name=".Login.Login">
@@ -45,11 +48,22 @@
 
         <activity android:name=".Petrol.UpdateActivity"/>
 
-        <!-- chucnang activity -->
-        <activity android:name=".chucnang.dichvu"></activity>
-        <activity android:name=".chucnang.nhienlieu"></activity>
-        <activity android:name=".chucnang.loaichi"></activity>
-        <activity android:name=".chucnang.loaithunhap"></activity>
-    </application>
+        <!-- Function activity -->
+        <activity android:name=".Function.dichvu">
 
+        </activity>
+
+        <activity android:name=".Function.nhienlieu">
+
+        </activity>
+
+        <activity android:name=".Function.loaichi">
+
+        </activity>
+
+        <activity android:name=".Function.loaithunhap">
+
+        </activity>
+
+    </application>
 </manifest>
