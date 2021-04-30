@@ -1,9 +1,10 @@
-package com.example.driverassistant.Home;
+package com.example.driverassistant.mainassistant;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.example.driverassistant.Petrol.list_main;
 import com.example.driverassistant.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.driverassistant.map.MapsActivity;
 
 public class Home extends AppCompatActivity {
     private TextView map;
@@ -29,6 +31,7 @@ public class Home extends AppCompatActivity {
     private TextView loaithunhap;
     private ImageView imgloaichi;
     private ImageView imgloaithunhap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
