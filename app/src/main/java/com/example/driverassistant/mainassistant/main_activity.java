@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.driverassistant.ListPetrol.list_main;
 import com.example.driverassistant.R;
+import com.example.driverassistant.map.MapsActivity;
 
 public class main_activity extends AppCompatActivity {
     private TextView map;
@@ -153,12 +154,8 @@ public class main_activity extends AppCompatActivity {
     }
 
     private void EnterMap() {
-        Uri gmmIntentUri = Uri.parse("geo:10.76833026 106.67583063");
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
-        }
+        Intent t = new Intent(main_activity.this, MapsActivity.class);
+        startActivity(t);
     }
 
     private void getdichvu() {
