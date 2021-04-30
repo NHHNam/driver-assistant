@@ -4,9 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".chucnang.nhienlieu"
+    tools:context=".Function.nhienlieu"
     android:orientation="vertical"
     android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="@color/light_blue">
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhiên liệu"
+            android:textColor="@color/white"
+            android:textSize="30sp"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
