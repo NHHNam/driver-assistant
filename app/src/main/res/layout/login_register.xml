@@ -1,125 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/green_white">
+    android:background="@color/bg_light"
+    android:gravity="center"
+    android:padding="10dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:gravity="center"
-        android:background="@drawable/header_background"
-        android:layout_marginBottom="20dp"
-        android:orientation="vertical"
-        android:padding="10dp">
-        <TextView
-            android:fontFamily="@font/dancing"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="REGISTER"
-            android:textColor="@color/black"
-            android:textSize="50dp"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/register"/>
-    </LinearLayout>
-    <LinearLayout
-        android:padding="10dp"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Hello there,"
+        android:textSize="24sp"
+        android:textColor="@color/bg_info"
+        android:layout_marginLeft="15dp"/>
 
-        <TextView
-            android:text="Name:"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"/>
-        <EditText
-            android:id="@+id/register_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
-    <LinearLayout
-        android:padding="10dp"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Sign up now"
+        android:textSize="48sp"
+        android:textColor="@color/bg_info"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"/>
 
-        <TextView
-            android:text="Ngày tháng năm sinh:"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"/>
-        <EditText
-            android:focusable="false"
-            android:id="@+id/register_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
-    <LinearLayout
-        android:padding="10dp"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:hint="Username"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        app:endIconMode="clear_text"
+        android:id="@+id/register_username"
+        android:layout_marginBottom="15dp">
 
-        <TextView
-            android:text="Address:"
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"/>
-        <EditText
-            android:id="@+id/register_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
-    <LinearLayout
-        android:padding="10dp"
+            android:background="@color/white"
+            android:inputType="text"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginBottom="15dp"
+        android:hint="Password"
+        app:startIconDrawable="@drawable/ic_baseline_password_24"
+        app:endIconMode="password_toggle"
+        android:id="@+id/register_pwd">
 
-        <TextView
-            android:text="Username:"
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"/>
-        <EditText
-            android:id="@+id/register_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
-    <LinearLayout
-        android:padding="10dp"
+            android:background="@color/white"
+            android:inputType="textPassword"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginBottom="15dp"
+        android:hint="Confirm Password"
+        app:startIconDrawable="@drawable/ic_baseline_password_24"
+        app:endIconMode="password_toggle"
+        android:id="@+id/register_confirm_pwd">
 
-        <TextView
-            android:text="Password:"
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"/>
-        <EditText
-            android:id="@+id/register_pwd"
+            android:background="@color/white"
+            android:inputType="textPassword"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        app:startIconDrawable="@drawable/ic_baseline_email_24"
+        app:endIconMode="clear_text"
+        android:id="@+id/register_email"
+        android:layout_marginBottom="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
+            android:background="@color/white"
+            android:inputType="textEmailAddress"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_success"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create new account successfully"
+        android:textColor="@color/bg_success"
+        android:textSize="20sp"
+        android:gravity="center"/>
 
     <Button
         android:id="@+id/btn_register"
-        android:backgroundTint="@color/light_blue"
-        android:layout_width="match_parent"
-        android:textColor="@color/black"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="REGISTER"/>
+        android:text="REGISTER"
+        android:background="@drawable/login_button"
+        android:textColor="@color/white"
+        android:layout_marginVertical="20dp"/>
+
+    <TextView
+        android:id="@+id/register_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Return"
+        android:textColor="@color/bg_secondary"
+        android:textSize="22sp"
+        android:gravity="center"/>
 
 </LinearLayout>
