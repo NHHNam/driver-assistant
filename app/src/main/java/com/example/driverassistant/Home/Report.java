@@ -110,7 +110,7 @@ public class Report extends AppCompatActivity {
         tvRepairTotal.setText(String.format("%,2dđ", totalRepair*1000));
         tvRepairAvg.setText(String.format("%,.2fđ", avgRepair*1000));
 
-        tvTotal.setText(String.format("%,2dđ", (totalGas + totalGas )*1000));
+        tvTotal.setText(String.format("%,2dđ", (totalGas + totalRepair )*1000));
         tvTotalAvg.setText(String.format("%,.2fđ", (avgRepair + avgGas)*1000));
     }
 
