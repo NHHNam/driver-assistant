@@ -3,17 +3,14 @@ package com.example.driverassistant.Login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.driverassistant.Home.Home;
+import com.example.driverassistant.Home.History.History;
 import com.example.driverassistant.R;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 
@@ -27,6 +24,8 @@ public class Login extends AppCompatActivity {
     private AccountDatabase db;
     private AccountDAO dao;
 
+    SharedPreferences sp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +36,19 @@ public class Login extends AppCompatActivity {
         // room database
         db = AccountDatabase.getInstance(this);
         dao = db.accountDAO();
+
+        sp = getSharedPreferences("login", MODE_PRIVATE);
+
+        if (sp.getBoolean("logged",false)) {
+            String spUsername = sp.getString("username","");
+
+            Intent intent = new Intent(Login.this, History.class);
+            intent.putExtra("username", spUsername);
+            startActivity(intent);
+
+            finish();
+            return;
+        }
 
         login.setOnClickListener(v -> {
             String name = username.getEditText().getText().toString().trim();
@@ -56,8 +68,13 @@ public class Login extends AppCompatActivity {
 
             // check account in Room database
             if (dao.verifyAccount(name, password) != null) {
-                Intent intent = new Intent(Login.this, Home.class);
+                Intent intent = new Intent(Login.this, History.class);
+                intent.putExtra("username", name);
                 startActivity(intent);
+
+                sp.edit().putBoolean("logged", true).apply();
+                sp.edit().putString("username", name).apply();
+
                 finish();
             } else {
                 tvError.setVisibility(View.VISIBLE);
@@ -78,16 +95,16 @@ public class Login extends AppCompatActivity {
         tvError = findViewById(R.id.tv_login_error);
 
         // hide error message
-        tvError.setVisibility(View.INVISIBLE);
+        tvError.setVisibility(View.GONE);
 
         username.getEditText().setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus)
-                tvError.setVisibility(View.INVISIBLE);
+                tvError.setVisibility(View.GONE);
         });
 
         pwd.getEditText().setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus)
-                tvError.setVisibility(View.INVISIBLE);
+                tvError.setVisibility(View.GONE);
         });
     }
 }

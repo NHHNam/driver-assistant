@@ -16,11 +16,11 @@ import com.example.driverassistant.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class More extends AppCompatActivity {
+public class Notification extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_more);
+        setContentView(R.layout.home_notification);
 
         setBottomNavigation();
     }
@@ -30,29 +30,29 @@ public class More extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = bottomNavigation.findViewById(R.id.home_nav);
 
-        bottomNavigationView.setSelectedItemId(R.id.home_bottom_more);
+        bottomNavigationView.setSelectedItemId(R.id.home_bottom_notification);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.home_bottom_report:
-                    startActivity(new Intent(More.this, Report.class));
+                    startActivity(new Intent(Notification.this, Report.class));
                     overridePendingTransition(0,0);
                     finish();
                     return true;
 
                 case R.id.home_bottom_history:
-                    startActivity(new Intent(More.this, History.class));
+                    startActivity(new Intent(Notification.this, History.class));
                     overridePendingTransition(0,0);
                     finish();
                     return true;
 
                 case R.id.home_bottom_notification:
-                    startActivity(new Intent(More.this, Notification.class));
-                    overridePendingTransition(0,0);
-                    finish();
                     return true;
 
                 case R.id.home_bottom_more:
+                    startActivity(new Intent(Notification.this, More.class));
+                    overridePendingTransition(0,0);
+                    finish();
                     return true;
             }
 
@@ -70,10 +70,10 @@ public class More extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     switch (which) {
                         case 0: // Đổ xăng
-                            startActivity(new Intent(More.this, Fuel.class));
+                            startActivity(new Intent(Notification.this, Fuel.class));
                             break;
                         case 1: // Sửa chữa
-                            startActivity(new Intent(More.this, Expense.class));
+                            startActivity(new Intent(Notification.this, Expense.class));
                             break;
                     }
                 }

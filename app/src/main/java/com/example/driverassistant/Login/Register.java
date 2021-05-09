@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.driverassistant.Home.Welcome;
 import com.example.driverassistant.R;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -54,7 +56,7 @@ public class Register extends AppCompatActivity {
         tvReturn = findViewById(R.id.register_back);
         tvSuccess = findViewById(R.id.tv_success);
 
-        tvSuccess.setVisibility(View.INVISIBLE);
+        tvSuccess.setVisibility(View.GONE);
 
         etUsername.getEditText().setOnClickListener(v -> {
             etUsername.setError(null);
@@ -97,6 +99,11 @@ public class Register extends AppCompatActivity {
 
             dao.addAccount(new Account(username, pass, email));
             tvSuccess.setVisibility(View.VISIBLE);
+
+            new Handler().postDelayed(() -> {
+                startActivity(new Intent(Register.this, Login.class));
+                finish();
+            }, 1500);
         }
     }
 
