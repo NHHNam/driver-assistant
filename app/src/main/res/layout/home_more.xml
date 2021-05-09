@@ -29,12 +29,14 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/img_emergency"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/ic_baseline_connect_without_contact_24"
                 android:scaleType="fitXY"/>
 
             <TextView
+                android:id="@+id/tv_emergency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gọi trợ giúp"
@@ -50,12 +52,14 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/img_map"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/ic_baseline_local_gas_station_24"
                 android:scaleType="fitXY"/>
 
             <TextView
+                android:id="@+id/tv_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tìm cây xăng"

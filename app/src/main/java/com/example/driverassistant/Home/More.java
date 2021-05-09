@@ -4,25 +4,70 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.driverassistant.Function.Emergency;
 import com.example.driverassistant.Function.Expense;
 import com.example.driverassistant.Function.Fuel;
 import com.example.driverassistant.Home.History.History;
+import com.example.driverassistant.Map.MapActivity;
 import com.example.driverassistant.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class More extends AppCompatActivity {
+    private ImageView Call;
+    private TextView tvCall;
+    private ImageView Map;
+    private TextView tvMap;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_more);
 
+        Call = findViewById(R.id.img_emergency);
+        tvCall = findViewById(R.id.tv_emergency);
+        Map = findViewById(R.id.img_map);
+        tvMap = findViewById(R.id.tv_map);
+
         setBottomNavigation();
+        // set Button Event for emergency call
+        Call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(More.this, Emergency.class);
+                startActivity(intent);
+            }
+        });
+
+        tvCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(More.this, Emergency.class);
+                startActivity(intent);
+            }
+        });
+        // set Button Event for Map
+        Map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(More.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tvMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(More.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setBottomNavigation() {
