@@ -91,8 +91,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/bottom_navigation_items"
-        app:itemTextColor="@drawable/home_nav_items"
-        app:itemIconTint="@drawable/home_nav_items"
+        app:itemTextColor="@drawable/_bottom_navigation_items"
+        app:itemIconTint="@drawable/_bottom_navigation_items"
         app:labelVisibilityMode="labeled"
         android:background="@color/white"/>
 

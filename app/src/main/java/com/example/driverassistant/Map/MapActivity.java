@@ -1,9 +1,6 @@
 package com.example.driverassistant.Map;
 
-import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import com.example.driverassistant.Home.History;
-import com.example.driverassistant.Home.Home;
 import com.example.driverassistant.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,7 +23,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -68,38 +61,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
             }
         });
 
-        setBottomNavigation();
-    }
-
-    private void setBottomNavigation() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.home_nav);
-
-        bottomNavigationView.setSelectedItemId(R.id.home_bottom_map);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.home_bottom_report:
-                    startActivity(new Intent(MapActivity.this, Home.class));
-                    overridePendingTransition(0,0);
-                    finish();
-                    return true;
-
-                case R.id.home_bottom_history:
-                    startActivity(new Intent(MapActivity.this, History.class));
-                    overridePendingTransition(0,0);
-                    finish();
-                    return true;
-
-                case R.id.home_bottom_map:
-
-                    return true;
-
-                case R.id.home_bottom_more:
-                    return true;
-            }
-
-            return false;
-        });
     }
 
     private void sendRequest() {
@@ -131,22 +92,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         originMarkers.add(mMap.addMarker(new MarkerOptions()
                 .title("Đại học Tôn Đức Thắng")
                 .position(tdt)));
-
-        if (ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-            && ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        mMap.setMyLocationEnabled(true);
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.driverassistant.Home;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -19,7 +20,6 @@ public class Welcome extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.home_welcome);
 
-        // welcome screen for 3s
         new Handler().postDelayed(() -> {
             startActivity(new Intent(Welcome.this, Login.class));
             finish();
