@@ -2,8 +2,10 @@ package com.example.driverassistant.Home;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import com.example.driverassistant.Function.Emergency;
 import com.example.driverassistant.Function.Expense;
 import com.example.driverassistant.Function.Fuel;
 import com.example.driverassistant.Home.History.History;
+import com.example.driverassistant.Login.Login;
 import com.example.driverassistant.Map.MapActivity;
 import com.example.driverassistant.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -25,6 +28,8 @@ public class More extends AppCompatActivity {
     private TextView tvCall;
     private ImageView Map;
     private TextView tvMap;
+    private Button btn_logout;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +39,7 @@ public class More extends AppCompatActivity {
         tvCall = findViewById(R.id.tv_emergency);
         Map = findViewById(R.id.img_map);
         tvMap = findViewById(R.id.tv_map);
+        btn_logout = findViewById(R.id.btn_logout);
 
         setBottomNavigation();
         // set Button Event for emergency call
@@ -66,6 +72,25 @@ public class More extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(More.this, MapActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = getSharedPreferences("login", MODE_PRIVATE).edit();
+                editor.putString("username", "");
+                editor.putString("password", "");
+                editor.putString("email", "");
+                editor.putBoolean("logged", false);
+                editor.apply();
+
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                intent.putExtra("finish", true);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
+                finish();
             }
         });
     }

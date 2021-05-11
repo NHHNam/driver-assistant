@@ -43,7 +43,6 @@
         <activity android:name=".Login.Login" />
         <activity android:name=".Login.Register" />
 
-
         <!-- Map activity -->
         <activity android:name=".Map.MapActivity"/>
 
