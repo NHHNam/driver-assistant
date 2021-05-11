@@ -27,12 +27,12 @@
         app:boxBackgroundColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText"
+            android:id="@+id/ed_kind"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
             android:focusable="false"
-            android:inputType="none"
-            android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24" />
+            android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -44,6 +46,8 @@ public class History extends AppCompatActivity {
 
     private RecyclerView recyclerView;
 
+    private EditText eKind;
+
     private List<User> dataList;
     private HistoryAdapter adapter;
 
@@ -64,10 +68,19 @@ public class History extends AppCompatActivity {
 
         getData();
 
+        eKind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getKindOfVehicles();
+            }
+        });
+
     }
+
 
     private void bindUI() {
         linearWelcome = findViewById(R.id.linear_welcome);
+        eKind = findViewById(R.id.ed_kind);
     }
 
     private void setRecyclerView() {
@@ -205,5 +218,49 @@ public class History extends AppCompatActivity {
         } else {
             linearWelcome.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void getKindOfVehicles() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        // set title
+        builder.setTitle("Select kind of vehicles");
+
+        // generate an array of places
+        final String[] places = new String[]{
+                "Honda",
+                "Yamaha",
+                "Exciter",
+                "Cub"
+        };
+        // set single choice
+        builder.setSingleChoiceItems(places, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // get the selected item
+                String selectedItem = Arrays.asList(places).get(i);
+
+                // set selected item to edit text
+                eKind.setText(selectedItem);
+            }
+        });
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                eKind.setText("");
+            }
+        });
+
+        // Create the alert dialog
+        AlertDialog dialog = builder.create();
+
+        // Finally, display the alert dialog
+        dialog.show();
     }
 }
