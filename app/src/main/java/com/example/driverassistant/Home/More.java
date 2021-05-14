@@ -18,7 +18,7 @@ import com.example.driverassistant.Function.Expense;
 import com.example.driverassistant.Function.Fuel;
 import com.example.driverassistant.Home.History.History;
 import com.example.driverassistant.Login.Login;
-import com.example.driverassistant.Map.MapActivity;
+import com.example.driverassistant.Map.MapAcitivity;
 import com.example.driverassistant.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -62,7 +62,7 @@ public class More extends AppCompatActivity {
         Map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(More.this, MapActivity.class);
+                Intent intent = new Intent(More.this, MapAcitivity.class);
                 startActivity(intent);
             }
         });
@@ -70,7 +70,7 @@ public class More extends AppCompatActivity {
         tvMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(More.this, MapActivity.class);
+                Intent intent = new Intent(More.this, MapAcitivity.class);
                 startActivity(intent);
             }
         });

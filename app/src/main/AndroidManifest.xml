@@ -19,7 +19,7 @@
         <!-- google api key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyA-NriZqEfYf925dwROxXQ500S3RNis9Qg" />
+            android:value="@string/google_map_key"/>
 
 
         <!-- Welcome -->
@@ -44,7 +44,7 @@
         <activity android:name=".Login.Register" />
 
         <!-- Map activity -->
-        <activity android:name=".Map.MapActivity"/>
+        <activity android:name=".Map.MapAcitivity"/>
 
 
         <!-- Function activity -->
