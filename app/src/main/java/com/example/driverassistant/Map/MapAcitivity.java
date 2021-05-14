@@ -12,6 +12,7 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
 import com.example.driverassistant.R;
@@ -88,6 +89,8 @@ public class MapAcitivity extends AppCompatActivity {
                 new PaceTask().execute(url);
             }
         });
+
+        setToolBar();
     }
 
     private void getCurrentLocation() {
@@ -114,7 +117,7 @@ public class MapAcitivity extends AppCompatActivity {
                         public void onMapReady(GoogleMap googleMap) {
                             map = googleMap;
                             map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(currentLat, currentLong), 17
+                                    new LatLng(currentLat, currentLong), 15
                             ));
                             if (ActivityCompat.checkSelfPermission(MapAcitivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MapAcitivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                                 // TODO: Consider calling
@@ -217,5 +220,12 @@ public class MapAcitivity extends AppCompatActivity {
                 map.addMarker(options);
             }
         }
+    }
+
+    private void setToolBar() {
+        Toolbar toolbar = findViewById(R.id.tool_bar_map);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 }
