@@ -69,7 +69,9 @@
         android:text="Username or Password is not correct"
         android:textColor="@color/bg_danger"
         android:textSize="16sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="#33DC3545"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -28,75 +27,46 @@ public class More extends AppCompatActivity {
     private static final int REQUEST_FINE_LOCATION= 112;
     private static final int REQUEST_COARSE_LOCATION = 113;
 
-    private ImageView Call;
-    private TextView tvCall;
-    private ImageView Map;
-    private TextView tvMap;
-    private Button btn_logout;
+    private ImageView imgEmergency;
+    private ImageView imgMap;
+    private Button btnLogout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_more);
 
-        Call = findViewById(R.id.img_emergency);
-        tvCall = findViewById(R.id.tv_emergency);
-        Map = findViewById(R.id.img_map);
-        tvMap = findViewById(R.id.tv_map);
-        btn_logout = findViewById(R.id.btn_logout);
+        imgEmergency = findViewById(R.id.img_emergency);
+        imgMap = findViewById(R.id.img_map);
+        btnLogout = findViewById(R.id.btn_logout);
 
         setBottomNavigation();
 
-        // set Button Event for emergency call
-        Call.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(More.this, Emergency.class);
-                startActivity(intent);
-            }
+        imgEmergency.setOnClickListener(v -> {
+            Intent intent = new Intent(More.this, Emergency.class);
+            startActivity(intent);
         });
 
-        tvCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(More.this, Emergency.class);
-                startActivity(intent);
-            }
-        });
-        // set Button Event for Map
-        Map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(More.this, MapActivity.class);
-                startActivity(intent);
-            }
+        imgMap.setOnClickListener(v -> {
+            Intent intent = new Intent(More.this, MapActivity.class);
+            startActivity(intent);
         });
 
-        tvMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(More.this, MapActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        btn_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences.Editor editor = getSharedPreferences("login", MODE_PRIVATE).edit();
-                editor.putString("username", "");
-                editor.putString("password", "");
-                editor.putString("email", "");
-                editor.putBoolean("logged", false);
-                editor.apply();
+        btnLogout.setOnClickListener(v -> {
+            SharedPreferences.Editor editor = getSharedPreferences("login", MODE_PRIVATE).edit();
+            editor.putString("username", "");
+            editor.putString("password", "");
+            editor.putString("email", "");
+            editor.putBoolean("logged", false);
+            editor.apply();
 
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                intent.putExtra("finish", true);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            intent.putExtra("finish", true);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
 
-                finish();
-            }
+            finish();
         });
     }
 

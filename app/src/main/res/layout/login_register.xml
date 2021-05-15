@@ -103,7 +103,9 @@
         android:text="Create new account successfully"
         android:textColor="@color/bg_success"
         android:textSize="16sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="#3328A745"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_register"

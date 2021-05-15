@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/bg_light">
 
@@ -15,6 +16,29 @@
         android:text="Khác"
         android:textColor="@color/white"
         android:textSize="20sp" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_baseline_account_circle_24"
+        android:scaleType="fitXY"
+        android:layout_gravity="center_horizontal"
+        app:tint="#00BCD4"/>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thông tin tài khoản"
+        android:textSize="22sp"
+        android:layout_gravity="center_horizontal"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_secondary"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="20dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,10 +54,11 @@
 
             <ImageView
                 android:id="@+id/img_emergency"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:src="@drawable/ic_baseline_connect_without_contact_24"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY"
+                app:tint="#00BCD4"/>
 
             <TextView
                 android:id="@+id/tv_emergency"
@@ -53,16 +78,17 @@
 
             <ImageView
                 android:id="@+id/img_map"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:src="@drawable/ic_baseline_local_gas_station_24"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY"
+                app:tint="#00BCD4"/>
 
             <TextView
                 android:id="@+id/tv_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hỗ trợ bản đồ"
+                android:text="Tìm cây xăng"
                 android:textSize="22sp"/>
 
         </LinearLayout>
@@ -74,7 +100,7 @@
         android:layout_height="1dp"
         android:background="@color/bg_secondary"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="40dp"/>
+        android:layout_marginVertical="20dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,10 +115,11 @@
             android:gravity="center">
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:src="@drawable/ic_baseline_file_download_24"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY"
+                app:tint="#00BCD4"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -110,10 +137,11 @@
             android:gravity="center">
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:src="@drawable/ic_baseline_mail_24"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY"
+                app:tint="#00BCD4"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -130,7 +158,7 @@
         android:layout_height="1dp"
         android:background="@color/bg_secondary"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="40dp"/>
+        android:layout_marginVertical="20dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -143,11 +171,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Đăng xuất"
-            android:backgroundTint="#00BCD4"/>
+            android:backgroundTint="@color/bg_secondary"/>
 
     </LinearLayout>
-
-
 
     <include layout="@layout/_bottom_navigation" android:id="@+id/bottom_navigation"/>
 

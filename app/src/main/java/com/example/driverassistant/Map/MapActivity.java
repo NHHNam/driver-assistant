@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -43,12 +44,15 @@ import java.util.List;
 public class MapActivity extends AppCompatActivity {
     private static final int REQUEST_ACCESS_FINE_LOCATION = 111;
 
-    Spinner spType;
-    Button btnFind;
-    SupportMapFragment supportMapFragment;
-    GoogleMap map;
-    FusedLocationProviderClient fusedLocationProviderClient;
-    double currentLat = 0, currentLong = 0;
+    private Spinner spType;
+    private Button btnFind;
+
+    private SupportMapFragment supportMapFragment;
+    private GoogleMap map;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+
+    private double currentLat = 14.0583;
+    private double currentLong = 108.2772;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,23 +64,14 @@ public class MapActivity extends AppCompatActivity {
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.google_map);
 
-        String[] placeTypeList = {"atm", "bank", "hospital", "movie_theater", "restaurant", "gas_station","parking"};
-        String[] placeNameList = {"ATM", "Ngân Hàng", "Bệnh Viện", "Rạp chiếu phim", "Nhà hàng", "Trạm xăng","Bãi đỗ xe"};
+        String[] placeTypeList = {"gas_station", "parking", "atm", "bank", "hospital", "movie_theater", "restaurant"};
+        String[] placeNameList = {"Cây xăng", "Bãi đỗ xe", "ATM", "Ngân Hàng", "Bệnh Viện", "Rạp chiếu phim", "Nhà hàng"};
 
         spType.setAdapter(new ArrayAdapter<>(MapActivity.this
                 , android.R.layout.simple_spinner_dropdown_item, placeNameList));
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        if (ActivityCompat.checkSelfPermission(MapActivity.this,
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            getCurrentLocation();
-        } else {
-            ActivityCompat.requestPermissions(MapActivity.this,
-                    new String[] {
-                            Manifest.permission.ACCESS_FINE_LOCATION
-                    }, REQUEST_ACCESS_FINE_LOCATION);
-        }
         btnFind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,32 +90,41 @@ public class MapActivity extends AppCompatActivity {
     }
 
     private void getCurrentLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MapAcitivity.this,
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(MapActivity.this,
                     new String[]{
-                            Manifest.permission.ACCESS_FINE_LOCATION
-                    }, 11);
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                    }, REQUEST_ACCESS_FINE_LOCATION);
         }
 
         Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(location -> {
-            if (location != null) {
-                currentLat = location.getLatitude();
-                currentLong = location.getLongitude();
+        task.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    currentLat = location.getLatitude();
+                    currentLong = location.getLongitude();
 
                     supportMapFragment.getMapAsync(new OnMapReadyCallback() {
                         @Override
                         public void onMapReady(GoogleMap googleMap) {
                             map = googleMap;
+
                             map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(currentLat, currentLong), 15
+                                    new LatLng(14.0583, 108.2772), 15
                             ));
-                            if (ActivityCompat.checkSelfPermission(MapAcitivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MapAcitivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                                ActivityCompat.requestPermissions(MapAcitivity.this,
+
+                            if (ActivityCompat.checkSelfPermission(MapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED
+                                    && ActivityCompat.checkSelfPermission(MapActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_DENIED) {
+                                ActivityCompat.requestPermissions(MapActivity.this,
                                         new String[]{
-                                                Manifest.permission.ACCESS_FINE_LOCATION
-                                        }, 11);
+                                                Manifest.permission.ACCESS_FINE_LOCATION,
+                                                Manifest.permission.ACCESS_COARSE_LOCATION
+                                        }, REQUEST_ACCESS_FINE_LOCATION);
                             }
+
                             map.setMyLocationEnabled(true);
                             UiSettings uiSettings = googleMap.getUiSettings();
                             uiSettings.setZoomControlsEnabled(true);
@@ -141,7 +145,6 @@ public class MapActivity extends AppCompatActivity {
     }
 
     private class PaceTask extends AsyncTask<String,Integer,String> {
-
         @Override
         protected String doInBackground(String... strings) {
             String data = downloadUrl(strings[0]);
@@ -201,10 +204,11 @@ public class MapActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<HashMap<String, String>> hashMaps) {
             map.clear();
-            for(int i =0; i<hashMaps.size(); i++){
+            for(int i = 0; i<hashMaps.size(); i++){
                 HashMap<String,String> hasMapList = hashMaps.get(i);
                 double lat = Double.parseDouble(hasMapList.get("lat"));
                 double lng = Double.parseDouble(hasMapList.get("lng"));
+
                 String name = hasMapList.get("name");
 
                 LatLng latLng = new LatLng(lat,lng);
