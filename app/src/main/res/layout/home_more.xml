@@ -142,8 +142,8 @@
             android:id="@+id/btn_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Logout"
-            android:backgroundTint="@color/light_blue"/>
+            android:text="Đăng xuất"
+            android:backgroundTint="#00BCD4"/>
 
     </LinearLayout>
 

@@ -40,7 +40,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
-public class MapAcitivity extends AppCompatActivity {
+public class MapActivity extends AppCompatActivity {
+    private static final int REQUEST_ACCESS_FINE_LOCATION = 111;
 
     Spinner spType;
     Button btnFind;
@@ -62,39 +63,38 @@ public class MapAcitivity extends AppCompatActivity {
         String[] placeTypeList = {"atm", "bank", "hospital", "movie_theater", "restaurant", "gas_station"};
         String[] placeNameList = {"ATM", "Bank", "Hospital", "Movie Theater", "Restaurant", "Gas Station"};
 
-        spType.setAdapter(new ArrayAdapter<>(MapAcitivity.this
+        spType.setAdapter(new ArrayAdapter<>(MapActivity.this
                 , android.R.layout.simple_spinner_dropdown_item, placeNameList));
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        if (ActivityCompat.checkSelfPermission(MapAcitivity.this,
+        if (ActivityCompat.checkSelfPermission(MapActivity.this,
                 Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             getCurrentLocation();
         } else {
-            ActivityCompat.requestPermissions(MapAcitivity.this,
-                    new String[]{
+            ActivityCompat.requestPermissions(MapActivity.this,
+                    new String[] {
                             Manifest.permission.ACCESS_FINE_LOCATION
-                    }, 11);
+                    }, REQUEST_ACCESS_FINE_LOCATION);
         }
-        btnFind.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int i = spType.getSelectedItemPosition();
-                String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
-                        "?location=" + currentLat + "," + currentLong +
-                        "&radius=5000" +
-                        "&types=" + placeTypeList[i] +
-                        "&sensor=true" +
-                        "&key=" + getResources().getString(R.string.google_map_key);
-                new PaceTask().execute(url);
-            }
+
+        btnFind.setOnClickListener(v -> {
+            int i = spType.getSelectedItemPosition();
+            String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
+                    "?location=" + currentLat + "," + currentLong +
+                    "&radius=5000" +
+                    "&types=" + placeTypeList[i] +
+                    "&sensor=true" +
+                    "&key=" + getResources().getString(R.string.google_map_key);
+            new PaceTask().execute(url);
         });
 
         setToolBar();
     }
 
     private void getCurrentLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -104,45 +104,44 @@ public class MapAcitivity extends AppCompatActivity {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    currentLat = location.getLatitude();
-                    currentLong = location.getLongitude();
 
-                    supportMapFragment.getMapAsync(new OnMapReadyCallback() {
-                        @Override
-                        public void onMapReady(GoogleMap googleMap) {
-                            map = googleMap;
-                            map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(currentLat, currentLong), 15
-                            ));
-                            if (ActivityCompat.checkSelfPermission(MapAcitivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MapAcitivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                                // TODO: Consider calling
-                                //    ActivityCompat#requestPermissions
-                                // here to request the missing permissions, and then overriding
-                                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                //                                          int[] grantResults)
-                                // to handle the case where the user grants the permission. See the documentation
-                                // for ActivityCompat#requestPermissions for more details.
-                                return;
-                            }
-                            map.setMyLocationEnabled(true);
-                            UiSettings uiSettings = googleMap.getUiSettings();
-                            uiSettings.setZoomControlsEnabled(true);
-                        }
-                    });
-                }
+        Task<Location> task = fusedLocationProviderClient.getLastLocation();
+        task.addOnSuccessListener(location -> {
+            if (location != null) {
+                currentLat = location.getLatitude();
+                currentLong = location.getLongitude();
+
+                supportMapFragment.getMapAsync(googleMap -> {
+                    map = googleMap;
+
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                            new LatLng(currentLat, currentLong), 15
+                    ));
+
+                    if (ActivityCompat.checkSelfPermission(MapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                            && ActivityCompat.checkSelfPermission(MapActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
+
+                    map.setMyLocationEnabled(true);
+                    UiSettings uiSettings = googleMap.getUiSettings();
+                    uiSettings.setZoomControlsEnabled(true);
+                });
             }
         });
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == 11){
-            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        if(requestCode == REQUEST_ACCESS_FINE_LOCATION){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 getCurrentLocation();
             }
         }
@@ -152,7 +151,7 @@ public class MapAcitivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... strings) {
-            String data =downloadUrl(strings[0]);
+            String data = downloadUrl(strings[0]);
             return data;
         }
 
@@ -163,20 +162,23 @@ public class MapAcitivity extends AppCompatActivity {
     }
 
     private String downloadUrl(String string) {
-
         try {
             URL url = new URL(string);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.connect();
+
             InputStream stream = connection.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
             StringBuilder builder = new StringBuilder();
             String line = "";
-            while ((line = reader.readLine())!=null){
+
+            while ( (line = reader.readLine()) != null){
                 builder.append(line);
             }
+
             String data = builder.toString();
             reader.close();
+
             return data;
         } catch (IOException e) {
             e.printStackTrace();
@@ -186,7 +188,6 @@ public class MapAcitivity extends AppCompatActivity {
     }
 
     private class ParserTask extends AsyncTask<String, Integer, List<HashMap<String,String>>>{
-
         @Override
         protected List<HashMap<String, String>> doInBackground(String... strings) {
             JsonParser jsonParser= new JsonParser();

@@ -18,12 +18,16 @@ import com.example.driverassistant.Function.Expense;
 import com.example.driverassistant.Function.Fuel;
 import com.example.driverassistant.Home.History.History;
 import com.example.driverassistant.Login.Login;
-import com.example.driverassistant.Map.MapAcitivity;
+import com.example.driverassistant.Map.MapActivity;
 import com.example.driverassistant.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class More extends AppCompatActivity {
+    private static final int REQUEST_CALL = 111;
+    private static final int REQUEST_FINE_LOCATION= 112;
+    private static final int REQUEST_COARSE_LOCATION = 113;
+
     private ImageView Call;
     private TextView tvCall;
     private ImageView Map;
@@ -42,6 +46,7 @@ public class More extends AppCompatActivity {
         btn_logout = findViewById(R.id.btn_logout);
 
         setBottomNavigation();
+
         // set Button Event for emergency call
         Call.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +67,7 @@ public class More extends AppCompatActivity {
         Map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(More.this, MapAcitivity.class);
+                Intent intent = new Intent(More.this, MapActivity.class);
                 startActivity(intent);
             }
         });
@@ -70,7 +75,7 @@ public class More extends AppCompatActivity {
         tvMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(More.this, MapAcitivity.class);
+                Intent intent = new Intent(More.this, MapActivity.class);
                 startActivity(intent);
             }
         });

@@ -43,14 +43,15 @@
         <activity android:name=".Login.Login" />
         <activity android:name=".Login.Register" />
 
-        <!-- Map activity -->
-        <activity android:name=".Map.MapAcitivity"/>
-
 
         <!-- Function activity -->
         <activity android:name=".Function.Fuel" android:parentActivityName=".Home.History.History"/>
         <activity android:name=".Function.Expense" android:parentActivityName=".Home.History.History"/>
+
+
+        <!-- More activity -->
         <activity android:name=".Function.Emergency" android:parentActivityName=".Home.More"/>
+        <activity android:name=".Map.MapActivity" android:parentActivityName=".Home.More"/>
 
     </application>
 

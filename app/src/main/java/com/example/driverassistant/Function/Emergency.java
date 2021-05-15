@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,55 +17,31 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.driverassistant.Map.MapActivity;
 import com.example.driverassistant.R;
 
+
 public class Emergency extends AppCompatActivity {
-    private static final int REQUEST_CALL = 1;
-    private TextView tvnum;
-    private ImageView img_call;
+    private static final int REQUEST_ACTION_CALL = 111;
+
+    private LinearLayout linearLayout113;
+    private LinearLayout linearLayout114;
+    private LinearLayout linearLayout115;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.function_emergency);
 
-        tvnum = findViewById(R.id.tv_number);
-        img_call = findViewById(R.id.img_calling);
-
         setToolBar();
 
-        img_call.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Call_Emergency();
-            }
-        });
-    }
+        linearLayout113 = findViewById(R.id.linear_emergency_113);
+        linearLayout114 = findViewById(R.id.linear_emergency_114);
+        linearLayout115 = findViewById(R.id.linear_emergency_115);
 
-    private void Call_Emergency() {
-        String num = tvnum.getText().toString().trim();
-        if(num.length() > 0){ // kiểm tra số điện thoại và kiểm tra đã cấp quyền cho app chưa
-            if(ContextCompat.checkSelfPermission(Emergency.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(Emergency.this, new String[]{
-                        Manifest.permission.CALL_PHONE
-                }, REQUEST_CALL);
-            }else{
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + num));
-                startActivity(intent);
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == REQUEST_CALL){
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Call_Emergency();
-            }else{
-                Toast.makeText(Emergency.this, "Permission is denied", Toast.LENGTH_SHORT).show();
-            }
-        }
+        linearLayout113.setOnClickListener(v -> callEmergency("113"));
+        linearLayout114.setOnClickListener(v -> callEmergency("114"));
+        linearLayout115.setOnClickListener(v -> callEmergency("115"));
     }
 
     private void setToolBar() {
@@ -72,5 +49,27 @@ public class Emergency extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    private void callEmergency(String number) {
+        if (hasPermission()) {
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse("tel:" + number));
+            startActivity(intent);
+        } else {
+            requestPermission();
+        }
+    }
+
+    private boolean hasPermission() {
+        int code = ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE);
+        return code == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(Emergency.this,
+                new String[]{
+                        Manifest.permission.CALL_PHONE
+                }, REQUEST_ACTION_CALL);
     }
 }
